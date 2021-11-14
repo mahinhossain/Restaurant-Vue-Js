@@ -86,6 +86,7 @@ export default {
       },
       error: [],
       formvalid: false,
+      baseUrl: "https://jsonservrestuvus.herokuapp.com",
     };
   },
   methods: {
@@ -99,7 +100,7 @@ export default {
       console.log(`this.form`, this.form);
       await axios
         .get(
-          `http://localhost:3004/user?email=${this.form.email}&password=${this.form.password}`,
+          `${this.baseUrl}/user?email=${this.form.email}&password=${this.form.password}`,
           this.form
         )
         .then((res) => {

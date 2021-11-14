@@ -97,13 +97,14 @@ export default {
       listofrestu: "",
       error: [],
       formvalid: false,
+        baseUrl: "https://jsonservrestuvus.herokuapp.com",
     };
   },
   methods: {
     async submitform() {
       console.log(`this.form`, this.form);
       await axios
-        .post("http://localhost:3004/restaurant", this.form)
+        .post(`${this.baseUrl}/restaurant`, this.form)
         .then((res) => {
           if (res.status == 201) {
             this.$swal("success");

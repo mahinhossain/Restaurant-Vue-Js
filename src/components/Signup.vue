@@ -102,6 +102,7 @@ export default {
       },
       error: [],
       formvalid: false,
+      baseUrl: "https://jsonservrestuvus.herokuapp.com",
     };
   },
   methods: {
@@ -115,7 +116,7 @@ export default {
         return false;
       }
       await axios
-        .post("http://localhost:3004/user", this.form)
+        .post(`${this.baseUrl}/user`, this.form)
         .then((res) => {
           if (res.status == 201) {
             localStorage.setItem("user-info", JSON.stringify(res.data));

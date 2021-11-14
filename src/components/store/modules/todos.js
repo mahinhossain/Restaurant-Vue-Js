@@ -1,4 +1,5 @@
 import axios from "axios";
+const baseUrl = "https://jsonservrestuvus.herokuapp.com";
 const state = {
   counter: 11,
   counter2: 121,
@@ -10,20 +11,17 @@ const actions = {
     commit("mySeach", searchText);
   },
   async getproducts({ commit }) {
-    const response = await axios.get("http://localhost:7777/products");
+    const response = await axios.get(baseUrl + "/products");
     console.log("response :>> ", response.data);
     commit("setProducts", response.data);
   },
   async addProduct({ commit }, product) {
-    const response = await axios.post(
-      "http://localhost:7777/products",
-      product
-    );
+    const response = await axios.post(baseUrl + "/products", product);
 
     commit("newProducts", response.data);
   },
   async handledelete({ commit }, id) {
-    const response = await axios.delete("http://localhost:7777/products/" + id);
+    const response = await axios.delete(+baseUrl + "/products/" + id);
     console.log("response ffff :>> ", response);
 
     actions.getproducts({ commit });

@@ -1,5 +1,6 @@
 <template>
   <div>
+    <!-- {{ listofrestu }} -->
     <!-- <input type=" text" placeholder="sercg" v-model="search" /> -->
     <table class="table table-striped">
       <thead>
@@ -12,7 +13,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="item in searchBlog" :key="item.name">
+        <tr v-for="item in listofrestu" :key="item.name">
           <th scope="row">{{ item.id }}</th>
           <td>{{ item.name }}</td>
           <td>{{ item.contact }}</td>
@@ -48,13 +49,14 @@ export default {
     return {
       listofrestu: "",
       search: "",
+      baseUrl: "https://jsonservrestuvus.herokuapp.com",
     };
   },
 
   methods: {
     loadData() {
       axios
-        .get("http://localhost:3004/restaurant", this.form)
+        .get(`${this.baseUrl}/restaurant`)
         .then((res) => {
           if (res.status == 200) {
             this.listofrestu = res.data;
@@ -67,7 +69,7 @@ export default {
       // this.listofrestu.splice(index, 1);
 
       axios
-        .delete("http://localhost:3004/restaurant/" + id)
+        .delete(`${this.baseUrl}/restaurant/` + id)
         .then((res) => {
           if (res.status == 200) {
             this.loadData();

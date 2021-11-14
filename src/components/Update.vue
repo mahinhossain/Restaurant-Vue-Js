@@ -103,13 +103,14 @@ export default {
       error: [],
       formvalid: false,
       id: "",
+      baseUrl: "https://jsonservrestuvus.herokuapp.com",
     };
   },
   methods: {
     async submitform() {
       this.id = this.$route.params.id;
       await axios
-        .put("http://localhost:3004/restaurant/" + this.id, this.form)
+        .put(`${this.baseUrl}/restaurant/` + this.id, this.form)
         .then((res) => {
           console.log(`res put`, res);
 
@@ -129,7 +130,7 @@ export default {
     this.id = this.$route.params.id;
 
     axios
-      .get("http://localhost:3004/restaurant/" + this.id)
+      .get(`${this.baseUrl}/restaurant/` + this.id)
       .then((res) => {
         this.form = res.data;
         console.log(`form`, this.form);
