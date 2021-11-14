@@ -2,6 +2,7 @@
   <div>
     <!-- {{ listofrestu }} -->
     <!-- <input type=" text" placeholder="sercg" v-model="search" /> -->
+
     <table class="table table-striped">
       <thead>
         <tr>
